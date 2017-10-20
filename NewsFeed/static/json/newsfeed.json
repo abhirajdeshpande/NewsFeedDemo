@@ -1,0 +1,107 @@
+[
+	{
+		"Time": "10/17/17 11:19",
+		"News": "Adrian to finish demonstration presentation.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:20",
+		"News": "Adrian to work with Sarah to build page linked to from the Simulations page. Page will contain links to demo presentation and info on how to sign up.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:21",
+		"News": "Adrian to put corrected videos on Vimeo after verifying that it is viewable in China.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:22",
+		"News": "Abhiraj to create a password management page.",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:23",
+		"News": "Abhiraj to make the game password the same as the user password.",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:24",
+		"News": "Abhiraj to make footer consistent throughout the game including logos and branding",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:25",
+		"News": "Andy",
+		"Link": " Adrian and Abhiraj to detail the distribution of work and make large scale changes to the project plan next week."
+	},
+	{
+		"Time": "10/17/17 11:26",
+		"News": "Andy to complete the inter-connected world work.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:27",
+		"News": "Epidemic engine development in Django.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:28",
+		"News": "Jordan to research behavioral studies done on the same or similar topics. ",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:29",
+		"News": "Adrian to reach out to High Schools.",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:30",
+		"News": "Andy to implement crawl functionality.",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:31",
+		"News": "Adrian to investigate black binders for notepads that have the presidential seal on the cover.",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:32",
+		"News": "Adrian to get permanent name tags",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:33",
+		"News": "Sarah to continue to document any improvements.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:34",
+		"News": "Adrian to create an instruction deck. ",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:35",
+		"News": "Andy/Adrian to test video freeze.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:36",
+		"News": "Adrian to get more Walkie-Talkies.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:37",
+		"News": "Adrian to add zoom info to instructions.",
+		"Link": "Yes"
+	},
+	{
+		"Time": "10/17/17 11:38",
+		"News": "Adrian and Sarah to test zoom functionality internally.",
+		"Link": "No"
+	},
+	{
+		"Time": "10/17/17 11:39",
+		"News": "Adrian to investigate student groups to use as beta participants",
+		"Link": "No"
+	}
+]
