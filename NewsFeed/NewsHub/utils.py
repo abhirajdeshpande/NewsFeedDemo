@@ -1,7 +1,7 @@
 from functools import wraps
 
 from NewsHub.exceptions import ClientError
-from NewsHub.models import WorldNewsCenterClass
+from NewsHub.models import WorldData
 
 
 def catch_client_error(func):
@@ -19,7 +19,7 @@ def get_world_or_error(world_id, user):
     if not user.is_authenticated:
         raise ClientError("USER_HAS_TO_LOGIN")
     try:
-        world = WorldNewsCenterClass.objects.get(pk=world_id)
-    except WorldNewsCenterClass.DoesNotExist:
-        raise ClientError("ROOM_INVALID")
+        world = WorldData.objects.get(pk=world_id)
+    except WorldData.DoesNotExist:
+        raise ClientError("get_world_or_error: WorldData.DoesNotExist")
     return world

@@ -1,0 +1,33 @@
+{% extends "NewsFeed/../base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    CLSG - Games List
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <p class="section-title">Simulations</p>
+        <div class="grid">
+            {% for game in games %}
+                <figure class="effect-sarah">
+                    <img src="{{ game.image }}" alt="{{ game.game_name }}"/>
+                    <figcaption>
+                        <h2>{{ game.game_name }}</h2>
+                        <p>{{ game.summary }}</p>
+                        {% if game.game_name in allowed_games %}
+                            <a href="{{ game.game_link }}" target="_blank">View
+                                more</a>
+                        {% else %}
+                            <p><img src="{% static 'img/lock.png' %}"
+                                    alt="Not Authorized" id="img-lock"></p>
+                        {% endif %}
+                    </figcaption>
+                </figure>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

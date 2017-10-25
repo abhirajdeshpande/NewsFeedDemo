@@ -4,11 +4,11 @@ $(function () {
     console.log("Connecting to " + ws_path)
     var socket = new ReconnectingWebSocket(ws_path)
 
-    var json_data=""
+    var json_data = ""
 
     socket.onopen = function () {
         console.log("Connected to chat socket")
-        $.getJSON("static/json/newsfeed.json", function (jsonData) {
+        $.getJSON("../static/json/newsfeed.json", function (jsonData) {
             json_data = jsonData
         })
     }
@@ -44,14 +44,14 @@ $(function () {
             console.log("Leaving world " + data.leave)
             $("#world-" + data.leave).remove()
 
-        } else if (data.News) {
+        } else if (data.summary) {
             var newsdiv = $("#world-" + data.world + " .news")
 
             // Message
             var news_text = "<div class='news-item row'>" +
                 "<div class='feed-item-text col-xs-10 col-sm-10 col-md-10" +
                 " col-lg-10 col-xl-10'>" +
-                "<span class='feed-time'>" + data.Time + "&nbsp;</span>" + data.News + "</div>" +
+                "<span class='feed-time'>" + data.time + "&nbsp;</span>" + data.summary + "</div>" +
                 "<div class='feed-item-click col-xs-1 col-sm-1 col-md-1" +
                 " col-lg-1-xl-1'>" +
                 "<a href='''>" +
@@ -132,10 +132,10 @@ $(function () {
     })
 
 
-    $(".pane-header").click(function () {
-        worldId = $(this).parent().attribute("id")
-        $('#' + worldId + " .news").toggle()
-    })
+    // $(".pane-header").click(function () {
+    //     worldId = $(this).parent().attribute("id")
+    //     $('#' + worldId + " .news").toggle()
+    // })
 
 
     // #####################################
@@ -147,13 +147,16 @@ $(function () {
     function publishNews() {
 
         random_number = Math.floor(Math.random() * 21) + 1
-        world_number = Math.floor(Math.random() * 4) + 1
 
         socket.send(JSON.stringify({
             "command": "send",
-            "world": world_number,
-            "News": json_data[random_number].News,
-            "Time": json_data[random_number].Time,
+            "summary": json_data[random_number].summary,
+            "content": json_data[random_number].content,
+            "time": json_data[random_number].time,
+            "isLink": json_data[random_number].isLink,
+            "world": json_data[random_number].world,
+            "country": json_data[random_number].country,
+            "role": json_data[random_number].role,
         }))
 
     }

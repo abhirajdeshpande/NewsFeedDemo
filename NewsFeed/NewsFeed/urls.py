@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import login, logout
 
-from NewsHub.views import index
+from NewsHub.views import signup, newsfeed
+from CLSGGameLogin.views import index
 
 urlpatterns = [
-    url(r'^$', index, name='homepage'),
+    url(r'^$', index, name='home'),
+    url(r'^newsfeed/$', newsfeed, name='newsfeed'),
+    url(r'^accounts/signup/$', signup, name='signup'),
     url(r'^accounts/login/$', login, name='login'),
     url(r'^accounts/logout/$', logout, name='logout'),
     path('admin/', admin.site.urls),

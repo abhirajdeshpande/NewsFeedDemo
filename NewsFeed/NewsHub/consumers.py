@@ -1,7 +1,7 @@
 from channels.auth import channel_session_user_from_http, channel_session_user
 
 from NewsHub.exceptions import ClientError
-from NewsHub.models import WorldNewsCenterClass
+from NewsHub.models import WorldData
 from channels import Channel
 import json
 
@@ -21,12 +21,12 @@ def ws_disconnect(message):
     # Unsubscribe from any connected world
     for world_id in message.channel_session.get("worlds", set()):
         try:
-            world = WorldNewsCenterClass.objects.get(pk=world_id)
+            world = WorldData.objects.get(pk=world_id)
             # removes from the world's send group
             # if this doesn't work, then removes once the first reply message
             #  expires
             world.websocket_group.discard(message.reply_channel)
-        except WorldNewsCenterClass.DoesNotExist:
+        except WorldData.DoesNotExist:
             print("Exception: World does not exist")
 
 
@@ -55,7 +55,7 @@ def world_join(message):
     message.reply_channel.send({
         "text": json.dumps({
             "join": str(world.id),
-            "title": world.news_center_name,
+            "title": world.world_name,
         })
     })
 
@@ -85,10 +85,10 @@ def world_leave(message):
 @channel_session_user
 @catch_client_error
 def news_publish(message):
-    if int(message['world']) not in message.channel_session['worlds']:
+    if str(int(message['world'])) not in message.channel_session['worlds']:
         raise ClientError("WORLD_ACCESS_DENIED")
 
     # print("Here's something about the world!")
 
     world = get_world_or_error(message["world"], message.user)
-    world.send_message([message["News"], message["Time"]], message.user)
+    world.send_message(message, message.user)

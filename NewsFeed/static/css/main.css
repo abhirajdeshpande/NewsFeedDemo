@@ -16,7 +16,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    margin: 0;
+    margin: 0px 0px 0px 0px;
     padding: 0;
     border: 0;
     font-size: 100%;
@@ -28,6 +28,10 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
+}
+
+html {
+    height: 100%;
 }
 
 body {
@@ -54,35 +58,14 @@ table {
     border-spacing: 0;
 }
 
-/* Header */
-header {
-    padding: 20px 0;
-    margin: 0 0 40px 0;
-    background: #5778C4;
-    color: #fff;
-}
-
-header h1 {
-    width: 800px;
-    margin: 0 auto;
-    font-size: 40px;
-}
-
-header a {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #fff;
-}
-
 /* Body */
-section {
-    width: 350px;
-    margin: 0 auto;
-}
 
 p {
     margin: 1em 0 2em 0;
+}
+
+div {
+    display: block;
 }
 
 .empty {
@@ -181,4 +164,283 @@ p {
     right: 2%;
     top: 5px;
     cursor: pointer;
+}
+
+form div {
+    padding-top: 10px;
+}
+
+form div button {
+    margin-top: 10px;
+    width: 100px;
+    height: 40px;
+}
+
+.title-div {
+    word-wrap: break-word;
+}
+
+.game-title {
+    font-family: 'Montserrat';
+    font-size: 48px;
+    color: #ffffff;
+    margin: 15px 0px 15px 0px;
+    letter-spacing: -2.72px;
+    word-wrap: break-word;
+    overflow: visible;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    padding-left: 25px;
+}
+
+.blue-bg {
+    background: #173288;
+
+    font-family: "Montserrat";
+    font-size: 14px;
+    color: #F8F8F8;
+    letter-spacing: -0.84px;
+
+    padding: 2px;
+}
+
+.btn-action {
+    min-width: 120px;
+
+    background: #173288;
+    border: 1px solid #EA3A57;
+    box-shadow: 3px 3px 2px 0 rgba(0, 0, 0, 0.50);
+
+    font-family: "Lato";
+    font-size: 21px;
+    color: #EDEDED;
+    margin: 15px 0px 15px 0px;
+
+}
+
+.btn-action:hover {
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.70);
+}
+
+.controls select, input {
+    width: 75%;
+}
+
+/* ################## */
+/* Index.html */
+/* ################## */
+
+.section-title {
+    font-family: 'Montserrat';
+    font-size: 48px;
+    color: #193585;
+    margin: 15px 0px 15px 0px;
+    letter-spacing: -2.72px;
+    word-wrap: break-word;
+    overflow: visible;
+}
+
+.grid {
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 0 4em;
+    max-width: 1000px;
+    list-style: none;
+    text-align: center;
+}
+
+/* Common style */
+.grid figure {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 320px;
+    max-width: 480px;
+    max-height: 360px;
+    width: 48%;
+    background: #3085a3;
+    text-align: center;
+    cursor: pointer;
+}
+
+.grid figure img {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    max-width: 100%;
+    opacity: 0.8;
+}
+
+.grid figure figcaption {
+    padding: 2em;
+    color: #193585;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+    pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+    z-index: 1000;
+    text-indent: 200%;
+    white-space: nowrap;
+    font-size: 0;
+    opacity: 0;
+}
+
+.grid figure h2 {
+    word-spacing: 0.1em;
+    font-weight: 300;
+}
+
+.grid figure h2 span {
+    font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+    margin: 0;
+}
+
+.grid figure p {
+    letter-spacing: 1px;
+    font-size: 68.5%;
+}
+
+/*---------------*/
+/***** Sarah *****/
+/*---------------*/
+
+figure.effect-sarah {
+    background: #EB5F0C;
+}
+
+figure.effect-sarah img {
+    max-width: none;
+    width: -webkit-calc(100% + 20px);
+    width: calc(100% + 20px);
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+figure.effect-sarah:hover img {
+    opacity: 0.4;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+figure.effect-sarah figcaption {
+    text-align: left;
+}
+
+figure.effect-sarah h2 {
+    position: relative;
+    overflow: hidden;
+    padding: 0.5em 0;
+}
+
+figure.effect-sarah h2::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    content: '';
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+
+figure.effect-sarah:hover h2::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+figure.effect-sarah p {
+    padding: 1em 0;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+figure.effect-sarah:hover p {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+#img-lock {
+    height: 32px;
+    width: 32px;
+}
+
+.link-action, .link-action a, .link-action a:hover, .link-action a:active {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/*=============*/
+#wrapper {
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#header {
+    padding: 20px 0;
+    background: #193585;
+    color: #fff;
+}
+
+#content {
+    /* Height of the footer */
+    padding: 10px 10px 100px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0px; /* Height of the footer */
+    background: #FFFFFF;
+    text-align: center;
+    border-top: 1px solid #173288;
+}
+
+#footer ul {
+    display: inline-block;
+}
+
+#footer img {
+    max-height: 70px;
+    padding: 15px;
 }

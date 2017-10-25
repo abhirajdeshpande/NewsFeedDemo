@@ -4,22 +4,30 @@
     GHSG - Sign Up
 {% endblock %}
 
+{% block extra_head %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
 
 {% block header_text %}
 
-{#    <!--NASPAA Logo-->#}
-{#    <div class="row text-center">#}
-{#        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">#}
-{#            <a href="https://studentcompetition.naspaa.org/">#}
-{#                <img src="{% static 'img/GFSG_logo_sm.png' %}"#}
-{#                     alt="[GFSG Logo]"#}
-{#                     class="logo">#}
-{#            </a>#}
-{#        </div>#}
-{#        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 title-div">#}
-{#            <h1 class="game-title">The Global Health Security Game</h1>#}
-{#        </div>#}
-{#    </div>#}
+    <!--NASPAA Logo-->
+    <div class="row text-center">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <a href="https://studentcompetition.naspaa.org/">
+                <img src="{% static 'img/GFSG_logo_sm.png' %}"
+                     alt="[GFSG Logo]"
+                     class="logo">
+            </a>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 title-div">
+            <h1 class="game-title">The Global Health Security Game</h1>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -69,7 +77,7 @@
                 {% endblock formsets %}
 
                 <div class="form-actions">
-                    <button class="btn-action">Log In</button>
+                    <button class="btn-action">Sign Up</button>
                     {% block extra_buttons %}
                     {% endblock extra_buttons %}
                 </div>
