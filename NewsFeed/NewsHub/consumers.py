@@ -5,7 +5,7 @@ from NewsHub.models import WorldData
 from channels import Channel
 import json
 
-from NewsHub.utils import catch_client_error, get_world_or_error
+from NewsHub.utils import catch_client_error, get_destination_or_error
 
 
 # take user from the http and insert in the channel_session
@@ -41,7 +41,7 @@ def ws_receive(message):
 @catch_client_error
 def world_join(message):
     # Find the world they requested (by ID)
-    world = get_world_or_error(message["world"], message.user)
+    world = get_destination_or_error(message)
 
     print("Welcome to the world!")
 
@@ -64,7 +64,7 @@ def world_join(message):
 @catch_client_error
 def world_leave(message):
     # Find the world they requested (by ID)
-    world = get_world_or_error(message["world"], message.user)
+    world = get_destination_or_error(message)
 
     print("See you soon!")
 
@@ -90,5 +90,5 @@ def news_publish(message):
 
     # print("Here's something about the world!")
 
-    world = get_world_or_error(message["world"], message.user)
-    world.send_message(message, message.user)
+    world = get_destination_or_error(message)
+    world.send_message(message)

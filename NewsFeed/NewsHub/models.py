@@ -36,18 +36,18 @@ class WorldData(models.Model):
         """
         return Group("world-%s" % self.id)
 
-    def send_message(self, message, user):
+    def send_message(self, message):
         final_msg = {
-            'world': str(self.id),
-            'country': user.country,
-            'role': user.role,
+            'world': message['world'],
+            'country': message['country'],
+            'role': message['role'],
             'summary': message['summary'],
             'content': message['content'],
             'time': message['time'],
             'isLink': message['isLink'],
         }
 
-        # print("send_message")
+        print("send_message" + str(message.user.role) + message['role'])
 
         self.websocket_group.send({
             "text": json.dumps(final_msg)
@@ -108,8 +108,31 @@ class RoleData(models.Model):
         return self.slug
 
 
-GAMES = SimulationGame.objects.all().values_list('game_name', flat=True)
-GAMES_LIST = list(zip(GAMES, GAMES))
+def get_games_list():
+    games = SimulationGame.objects.all().values_list('game_name', flat=True)
+    games_list = list(zip(games, games))
+    return games_list
+
+
+def get_worlds_list():
+    worlds = WorldData.objects.all().values_list('world_name', flat=True)
+    world_ids = WorldData.objects.all().values_list('id', flat=True)
+    worlds_list = list(zip(world_ids, worlds))
+    return worlds_list
+
+
+def get_country_list():
+    countries = CountryData.objects.all().values_list('country', flat=True)
+    country_id = CountryData.objects.all().values_list('id', flat=True)
+    countries_list = list(zip(country_id, countries))
+    return countries_list
+
+
+def get_roles_list():
+    roles = RoleData.objects.all().values_list('role', flat=True)
+    role_id = RoleData.objects.all().values_list('id', flat=True)
+    roles_list = list(zip(role_id, roles))
+    return roles_list
 
 
 @python_2_unicode_compatible
@@ -118,14 +141,14 @@ class UserClass(AbstractUser):
     User information
     """
 
-    world = models.CharField(max_length=64, blank=True)
-    role = models.CharField(max_length=64, blank=True)
-    country = models.CharField(max_length=64, blank=True)
+    world = models.CharField(max_length=10, choices=get_worlds_list())
+    role = models.CharField(max_length=10, choices=get_roles_list())
+    country = models.CharField(max_length=10, choices=get_country_list())
 
-    allowed_games = MultiSelectField(choices=GAMES_LIST)
+    allowed_games = MultiSelectField(choices=get_games_list())
 
     def __str__(self):
-        return self.username
+        return self.email
 
 
 @python_2_unicode_compatible

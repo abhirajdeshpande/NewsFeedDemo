@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from NewsHub.models import WorldData, CountryData, RoleData, UserClass
+from NewsHub.models import WorldData, CountryData, RoleData, UserClass, \
+    get_worlds_list, get_country_list, get_roles_list
 
 
 class SignUpForm(UserCreationForm):
@@ -9,17 +10,11 @@ class SignUpForm(UserCreationForm):
                              label='Username',
                              help_text='Enter your email address', )
 
-    world = forms.ModelChoiceField(
-        queryset=WorldData.objects.all().values_list('world_name',
-                                                     flat=True))
-
-    country = forms.ModelChoiceField(
-        queryset=CountryData.objects.all().values_list('country',
-                                                       flat=True))
-
-    role = forms.ModelChoiceField(
-        queryset=RoleData.objects.all().values_list('role',
-                                                    flat=True))
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['world'] = forms.ChoiceField(choices=get_worlds_list())
+        self.fields['country'] = forms.ChoiceField(choices=get_country_list())
+        self.fields['role'] = forms.ChoiceField(choices=get_roles_list())
 
     class Meta:
         model = UserClass
@@ -28,11 +23,11 @@ class SignUpForm(UserCreationForm):
 
 
 class LogInForm(UserCreationForm):
-    email = forms.EmailField(max_length=254,
-                             required=True,
-                             label='Username',
-                             help_text='Enter your email address', )
+    # email = forms.CharField(max_length=254,
+    #                         required=True,
+    #                         label='Username',
+    #                         help_text='Enter your email address', )
 
     class Meta:
         model = UserClass
-        fields = ('email', 'password')
+        fields = ('username', 'password')

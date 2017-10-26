@@ -11,7 +11,8 @@ def index(request):
         allowed_games = request.user.allowed_games
     else:
         allowed_games = []
-    games_list = SimulationGame.objects.all().order_by('game_order')
+    games_list = SimulationGame.objects.all().order_by('-is_active',
+                                                       'game_order')
 
     return render(request,
                   "Games/index.html",
