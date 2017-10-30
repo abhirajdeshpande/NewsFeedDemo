@@ -7,6 +7,7 @@ class SimulationGame(models.Model):
     game_name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='static/media')
     summary = models.CharField(max_length=1024)
+    details = models.CharField(max_length=5120, blank=True)
     game_link = models.URLField(blank=True)
     is_active = models.BooleanField(default=True)
 

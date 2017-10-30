@@ -38,6 +38,8 @@ class WorldData(models.Model):
 
     def send_message(self, message):
         final_msg = {
+            'usercountry': dict(get_country_list())[str(message.user.country)],
+            'userrole': dict(get_roles_list())[str(message.user.role)],
             'world': message['world'],
             'country': message['country'],
             'role': message['role'],
@@ -47,7 +49,7 @@ class WorldData(models.Model):
             'isLink': message['isLink'],
         }
 
-        print("send_message" + str(message.user.role) + message['role'])
+        # print("send_message")
 
         self.websocket_group.send({
             "text": json.dumps(final_msg)

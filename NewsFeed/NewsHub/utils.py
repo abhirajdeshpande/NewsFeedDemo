@@ -22,6 +22,8 @@ def get_destination_or_error(message):
     try:
         if message['command'] == 'send':
 
+            print('Checking for ' + message.user.username)
+
             country_dict = dict(get_country_list())
             role_dict = dict(get_roles_list())
 

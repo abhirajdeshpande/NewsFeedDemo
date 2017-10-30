@@ -19,7 +19,7 @@ $(function () {
     // Processing responses from the server
     socket.onmessage = function (message) {
         // Decode JSON
-        console.log("Got websocket message " + message.data)
+        // console.log("Got websocket message " + message.data)
         var data = JSON.parse(message.data)
         // Handle errors
         if (data.error) {
@@ -45,71 +45,76 @@ $(function () {
             $("#world-" + data.leave).remove()
 
         } else if (data.summary) {
-            var newsdiv = $("#world-" + data.world + " .news")
+            console.log(data.country + '\t' + data.usercountry + '\t' +
+                data.role + '\t' + data.userrole)
 
-            // Message
-            var news_text = "<div class='news-item row'>" +
-                "<div class='feed-item-text col-xs-10 col-sm-10 col-md-10" +
-                " col-lg-10 col-xl-10'>" +
-                "<span class='feed-time'>" + data.time + "&nbsp;</span>" + data.summary + "</div>"
+            if (data.country === data.usercountry && data.role === data.userrole) {
 
-            if (data.isLink === "Yes") {
-                news_text +=
-                    "<div class='feed-item-click col-xs-1 col-sm-1 col-md-1" +
-                    " col-lg-1-xl-1'>" +
-                    "<a href=''>" +
-                    "<svg width='16px' height='11px' viewBox='0 0 16 11'" +
-                    " version='1.1' xmlns='http://www.w3.org/2000/svg'" +
-                    " xmlns:xlink='http://www.w3.org/1999/xlink'>" +
-                    "<!-- Generator: Sketch 47.1 (45422) -" +
-                    " http://www.bohemiancoding.com/sketch -->" +
-                    " <desc>Created with Sketch.</desc>" +
-                    "<defs></defs>" +
-                    "<g id='Page-1' stroke='none' stroke-width='1' fill='none'" +
-                    " fill-rule='evenodd'>" +
-                    "<g id='News-Feed-Open' transform='translate(-987.000000," +
-                    " -51.000000) fill-rule='nonzero' fill='#0000FF'>" +
-                    "<g id='Feed-List" +
-                    " transform='translate(762.000000, 44.000000)'>" +
-                    "<g id='Feed-Item'> <g id='Feed-text'" +
-                    " transform='translate(7.000000, 5.000000)>' +" +
-                    "<g id='Link' transform='translate(218.000000, 2.000000)'>" +
-                    "<g id='link'> <g id='Octicons'> <g id='link'>" +
-                    "<path d='M3.2,6.4 L4.26666667,6.4 L4.26666667,7.46666667" +
-                    " L3.2,7.46666667 C1.6,7.46666667 0,5.664 0,3.73333333" +
-                    " C0,1.80266667 1.65333333,0 3.2,0 L7.46666667,0" +
-                    " C9.01333333,0 10.6666667,1.80266667 10.6666667,3.73333333" +
-                    " C10.6666667,5.23733333 9.696,6.63466667 8.53333333,7.2" +
-                    " L8.53333333,5.96266667 C9.152,5.48266667 9.6,4.608" +
-                    " 9.6,3.73333333 C9.6,2.368 8.512,1.06666667" +
-                    " 7.46666667,1.06666667 L3.2,1.06666667" +
-                    " C2.15466667,1.06666667 1.06666667,2.368" +
-                    " 1.06666667,3.73333333 C1.06666667,5.09866667" +
-                    " 2.13333333,6.4 3.2,6.4 Z M12.8,3.2 L11.7333333,3.2" +
-                    " L11.7333333,4.26666667 L12.8,4.26666667" +
-                    " C13.8666667,4.26666667 14.9333333,5.568" +
-                    " 14.9333333,6.93333333 C14.9333333,8.29866667" +
-                    " 13.8453333,9.6 12.8,9.6 L8.53333333,9.6 C7.488,9.6" +
-                    " 6.4,8.29866667 6.4,6.93333333 C6.4,6.048 6.848,5.184" +
-                    " 7.46666667,4.704 L7.46666667,3.46666667 C6.304,4.032" +
-                    " 5.33333333,5.42933333 5.33333333,6.93333333" +
-                    " C5.33333333,8.864 6.98666667,10.6666667" +
-                    " 8.53333333,10.6666667 L12.8,10.6666667" +
-                    " C14.3466667,10.6666667 16,8.864 16,6.93333333" +
-                    " C16,5.00266667 14.4,3.2 12.8,3.2 Z id='Shape'></path>" +
-                    "</g> </g> </g> </g> </g> </g> </g> </g> </g> </svg>" +
-                    "</a> </div> </div>"
+                var newsdiv = $("#world-" + data.world + " .news")
+
+                // Message
+                var news_text = "<div class='news-item row'>" +
+                    "<div class='feed-item-text col-xs-10 col-sm-10 col-md-10" +
+                    " col-lg-10 col-xl-10'>" +
+                    "<span class='feed-time'>" + data.time + "&nbsp;</span>" + data.summary + "</div>"
+
+                if (data.isLink === "Yes") {
+                    news_text +=
+                        "<div class='feed-item-click col-xs-1 col-sm-1 col-md-1" +
+                        " col-lg-1-xl-1'>" +
+                        "<a href=''>" +
+                        "<svg width='16px' height='11px' viewBox='0 0 16 11'" +
+                        " version='1.1' xmlns='http://www.w3.org/2000/svg'" +
+                        " xmlns:xlink='http://www.w3.org/1999/xlink'>" +
+                        "<!-- Generator: Sketch 47.1 (45422) -" +
+                        " http://www.bohemiancoding.com/sketch -->" +
+                        " <desc>Created with Sketch.</desc>" +
+                        "<defs></defs>" +
+                        "<g id='Page-1' stroke='none' stroke-width='1' fill='none'" +
+                        " fill-rule='evenodd'>" +
+                        "<g id='News-Feed-Open' transform='translate(-987.000000," +
+                        " -51.000000)' fill-rule='nonzero' fill='#0000FF'>" +
+                        "<g id='Feed-List" +
+                        " transform='translate(762.000000, 44.000000)'>" +
+                        "<g id='Feed-Item'> <g id='Feed-text'" +
+                        " transform='translate(7.000000, 5.000000)'>" +
+                        "<g id='Link' transform='translate(218.000000, 2.000000)'>" +
+                        "<g id='link'> <g id='Octicons'> <g id='link'>" +
+                        "<path d='M3.2,6.4 L4.26666667,6.4 L4.26666667,7.46666667" +
+                        " L3.2,7.46666667 C1.6,7.46666667 0,5.664 0,3.73333333" +
+                        " C0,1.80266667 1.65333333,0 3.2,0 L7.46666667,0" +
+                        " C9.01333333,0 10.6666667,1.80266667 10.6666667,3.73333333" +
+                        " C10.6666667,5.23733333 9.696,6.63466667 8.53333333,7.2" +
+                        " L8.53333333,5.96266667 C9.152,5.48266667 9.6,4.608" +
+                        " 9.6,3.73333333 C9.6,2.368 8.512,1.06666667" +
+                        " 7.46666667,1.06666667 L3.2,1.06666667" +
+                        " C2.15466667,1.06666667 1.06666667,2.368" +
+                        " 1.06666667,3.73333333 C1.06666667,5.09866667" +
+                        " 2.13333333,6.4 3.2,6.4 Z M12.8,3.2 L11.7333333,3.2" +
+                        " L11.7333333,4.26666667 L12.8,4.26666667" +
+                        " C13.8666667,4.26666667 14.9333333,5.568" +
+                        " 14.9333333,6.93333333 C14.9333333,8.29866667" +
+                        " 13.8453333,9.6 12.8,9.6 L8.53333333,9.6 C7.488,9.6" +
+                        " 6.4,8.29866667 6.4,6.93333333 C6.4,6.048 6.848,5.184" +
+                        " 7.46666667,4.704 L7.46666667,3.46666667 C6.304,4.032" +
+                        " 5.33333333,5.42933333 5.33333333,6.93333333" +
+                        " C5.33333333,8.864 6.98666667,10.6666667" +
+                        " 8.53333333,10.6666667 L12.8,10.6666667" +
+                        " C14.3466667,10.6666667 16,8.864 16,6.93333333" +
+                        " C16,5.00266667 14.4,3.2 12.8,3.2 Z' id='Shape'></path>" +
+                        "</g> </g> </g> </g> </g> </g> </g> </g> </g> </svg>" +
+                        "</a> </div> </div>"
+                }
+                else {
+                    news_text += "</div>"
+                }
+
+                newsdiv.prepend(news_text);
+                // newsdiv.scrollTop(0);
+            } else {
+                console.log("Cannot handle feed!")
             }
-            else {
-                news_text += "</div>"
-            }
-
-            newsdiv.prepend(news_text);
-            // newsdiv.scrollTop(0);
-        } else {
-            console.log("Cannot handle feed!")
         }
-
     }
 
     // if joined the room or not
@@ -167,6 +172,6 @@ $(function () {
 
     }
 
-    window.setInterval(publishNews, 15000)
+    // window.setInterval(publishNews, 5000)
 
 })

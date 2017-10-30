@@ -11,7 +11,6 @@ def newsfeed(request):
     """
     worlds = WorldData.objects.order_by('world_name')
 
-    # User details - world country and role
     if request.user.is_authenticated:
         # Redirect to Newsfeed page
         url_string = 'NewsFeed/newsfeed.html'

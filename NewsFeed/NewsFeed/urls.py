@@ -19,10 +19,11 @@ from django.urls import path
 from django.contrib.auth.views import login, logout
 
 from NewsHub.views import signup, newsfeed
-from CLSGGameLogin.views import index
+from CLSGGameLogin.views import index, simulation
 
 urlpatterns = [
     url(r'^$', index, name='home'),
+    url(r'simulations/$', simulation, name='simulation'),
     url(r'^newsfeed/$', newsfeed, name='newsfeed'),
     url(r'^accounts/signup/$', signup, name='signup'),
     url(r'^accounts/login/$', login, name='login'),
